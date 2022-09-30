@@ -1,0 +1,33 @@
+.--navbar-navbar-container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    color:white;
+    height:65px;
+    padding:0 20px;
+    margin-bottom:36px;
+    background: rgb(103,34,128);
+    background: linear-gradient(90deg, rgba(103,34,128,1) 0%, rgba(166,38,211,1) 100%);
+}
+
+.--navbar-logo-container{
+    display:flex;
+    align-items:center;
+}
+
+.--navbar-logo{
+    width:31.31px;
+    height:26.22px;
+    margin-right:6.69px;
+}
+
+.--navbar-logo-title{
+    font-family: 'Karla', sans-serif;
+    font-size:20.75px;
+    font-weight:bold;
+}
+
+.--navbar-desc{
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+}

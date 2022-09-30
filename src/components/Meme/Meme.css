@@ -1,0 +1,18 @@
+.--meme-meme-container{
+    margin:0px 36px;
+}
+
+.--meme-top-text, .--meme-bottom-text{
+    font-family:'Karla', 'sans-serif';
+    font-size:12px;
+}
+
+.btn-purple-gradient{
+    width:100%;
+    font-family:'Karla', 'sans-serif';
+    font-size:16px;
+    font-weight: bold;
+    color:white;
+    background: rgb(103,34,128);
+    background: linear-gradient(90deg, rgba(103,34,128,1) 0%, rgba(166,38,211,1) 100%);
+}
