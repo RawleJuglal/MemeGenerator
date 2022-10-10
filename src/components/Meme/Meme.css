@@ -1,5 +1,6 @@
 .--meme-meme-container{
     margin:0px 36px;
+    /* display:flex; */
 }
 
 .--meme-top-text, .--meme-bottom-text{
@@ -15,4 +16,10 @@
     color:white;
     background: rgb(103,34,128);
     background: linear-gradient(90deg, rgba(103,34,128,1) 0%, rgba(166,38,211,1) 100%);
+}
+
+.--meme-meme-img{
+    max-width:100%;
+    display:block;
+    margin:100px auto;
 }
