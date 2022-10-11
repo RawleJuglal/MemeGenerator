@@ -3,7 +3,7 @@ import './Meme.css'
 import memesData from '../../memesData.js'
 
 export default function Meme(){
-    let [memeImage, setMemeImage] = React.useState("");
+    let [memeImage, setMemeImage] = React.useState("http://i.imgflip.com/1bij.jpg");
 
     function getMemeImage(){
         setMemeImage(memesData.data.memes[Math.floor(Math.random()*memesData.data.memes.length)].url);
