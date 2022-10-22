@@ -1,32 +1,72 @@
 import React from 'react';
 import './Meme.css'
-import memesData from '../../memesData.js'
+// import memesData from '../../memesData.js'
 
 export default function Meme(){
-    let [memeImage, setMemeImage] = React.useState("http://i.imgflip.com/1bij.jpg");
+    let [meme, setMeme] = React.useState({
+        topText: "",
+        bottomText: "",
+        randomImage: "http://i.imgflip.com/1bij.jpg"
+    });
+
+    const [allMemes, setAllMemes] = React.useState([])
+
+    React.useEffect(()=>{
+        fetch(`https://api.imgflip.com/get_memes`)
+            .then(res => res.json())
+            .then(data => {
+                return setAllMemes(()=>{
+                    return data.data.memes
+                })
+            })
+    },[])
 
     function getMemeImage(){
-        setMemeImage(memesData.data.memes[Math.floor(Math.random()*memesData.data.memes.length)].url);
+        return setMeme((prevState)=>{
+            return {...prevState, randomImage: allMemes[Math.floor(Math.random()*allMemes.length)].url}
+        })
+    }
+
+    function handleChange(event){
+        const {name, value} = event.target
+        return setMeme((prevState)=>{
+            return {
+                ...prevState,
+                [name]: value
+            }
+        })
     }
 
     return(
-        <div className='--meme-meme-container'>
-            <div className='row --meme-meme-form-container'>
-                    <div className='col-6 --meme-top-text-column-container'>
-                        <div className="mb-3 --meme-top-text-container">
-                            <input type="email" className="form-control --meme-top-text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='shut up' />
-                        </div>
-                    </div>
-                    <div className='col-6 --meme-bottom-text-column-container'>
-                        <div className="mb-3 --meme-bottom-text-container">
-                            <input type="email" className="form-control --meme-bottom-text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='and take my money' />
-                        </div>
-                    </div>
-                    <div className='col-12 --meme-submit-container'>
-                        <button type="submit" onClick={getMemeImage} className="btn btn-purple-gradient">Get a New Meme Image 🖼</button>
-                    </div>  
+        <main>
+            <div className="form">
+                <input 
+                    type="text"
+                    placeholder="shut up and"
+                    className="form--input"
+                    name="topText"
+                    onChange={handleChange}
+                    
+                />
+                <input 
+                    type="text"
+                    placeholder="take my money"
+                    className="form--input"
+                    name="bottomText"
+                    onChange={handleChange}
+                />
+                <button 
+                    className="form--button"
+                    onClick={getMemeImage}
+                >
+                    Get a new meme image 🖼
+                </button>
             </div>
-            <img className='--meme-meme-img' src={memeImage} alt="Logo" />;
-        </div>
+            <div className="meme">
+                <img src={meme.randomImage} className="meme--image" />
+                <h2 className="meme--text top">{meme.topText.length > 0 ? meme.topText : "Shut up and "}</h2>
+                <h2 className="meme--text bottom">{meme.bottomText.length > 0 ? meme.bottomText : "take my money"}</h2>
+            </div>
+        </main>
     )
 }
