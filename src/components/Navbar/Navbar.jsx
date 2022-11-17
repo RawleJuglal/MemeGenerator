@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navbar.css';
-import Troll from '../../images/TrollFace.png'
+import Troll from '/MemeGenerator/images/TrollFace.png'
 
 export default function Navbar(){
     return(
